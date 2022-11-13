@@ -1,21 +1,20 @@
-import { faker } from '@faker-js/faker/locale/ru';
-
-import express from 'express';
+const express = require('express')
 const app = express();
+const { faker } = require('@faker-js/faker/locale/ru');
 
 const host = '127.0.0.1'
 const port = 3000
 
 function generate() {
-  let users = []
+  let user = []
   for (let i=0; i < 100; i++) {
     let Name = faker.name.Name();
     let SurName = faker.name.SurName();
     let index = faker.address.index();
     let car = faker.vehicle.vehicle();
-    let telephone = faker.phone.number('+7-###-###-##-##');
+    let telephone = faker.phone.number('+7-777-777-77-77');
 
-    users.push({
+    user.push({
         "userid": i,
         "name": Name,
         "sur_name": SurName,
@@ -25,7 +24,7 @@ function generate() {
     });
   }
 
-  return { "data": users }
+  return { "users": user }
 }
 
 app.get('/user', (req, res) => {

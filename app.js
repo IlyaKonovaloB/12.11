@@ -6,7 +6,7 @@ const app = express();
 const host = '127.0.0.1'
 const port = 3000
 
-function generator() {
+function generate() {
   let users = []
   for (let i=0; i < 100; i++) {
     let Name = faker.name.Name();
@@ -30,7 +30,7 @@ function generator() {
 
 app.get('/user', (req, res) => {
   res.status(200).type('text/plain')
-  res.send(JSON.stringify(generator(), null, '\t'))
+  res.send(JSON.stringify(generate(), null, '\t'))
 })
 
 app.listen(port, host, function () {
